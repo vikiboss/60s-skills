@@ -1,0 +1,206 @@
+{
+  "name": "utility-tools",
+  "version": "1.0.0",
+  "description": "Collection of useful utility tools including IP lookup, translation, QR code generation, hash calculation, URL OG metadata extraction, and more.",
+  "protocol": "mcp",
+  "tools": [
+    {
+      "name": "lookup_ip_info",
+      "description": "Get detailed information about an IP address including location, ISP, and network information",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ip": {
+            "type": "string",
+            "description": "IP address to lookup. If not provided, returns information about the requester's IP."
+          }
+        }
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/ip",
+        "method": "GET",
+        "parameters": {
+          "ip": "query"
+        }
+      }
+    },
+    {
+      "name": "translate_text",
+      "description": "Translate text between multiple languages using free translation service",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text to translate"
+          },
+          "from": {
+            "type": "string",
+            "description": "Source language code (e.g., 'zh', 'en', 'ja'). Use 'auto' for automatic detection.",
+            "default": "auto"
+          },
+          "to": {
+            "type": "string",
+            "description": "Target language code (e.g., 'zh', 'en', 'ja')",
+            "default": "en"
+          }
+        },
+        "required": ["text"]
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/fanyi",
+        "method": "POST",
+        "contentType": "application/json"
+      }
+    },
+    {
+      "name": "generate_qrcode",
+      "description": "Generate QR code for any text or URL",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text or URL to encode in QR code"
+          },
+          "size": {
+            "type": "number",
+            "description": "QR code size in pixels",
+            "default": 200,
+            "minimum": 50,
+            "maximum": 1000
+          }
+        },
+        "required": ["text"]
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/qrcode",
+        "method": "GET",
+        "parameters": {
+          "text": "query",
+          "size": "query"
+        }
+      }
+    },
+    {
+      "name": "calculate_hash",
+      "description": "Calculate hash (MD5, SHA1, SHA256, SHA512) for given text",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text to hash"
+          },
+          "algorithm": {
+            "type": "string",
+            "enum": ["md5", "sha1", "sha256", "sha512"],
+            "description": "Hash algorithm to use",
+            "default": "md5"
+          }
+        },
+        "required": ["text"]
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/hash",
+        "method": "POST",
+        "contentType": "application/json"
+      }
+    },
+    {
+      "name": "get_og_metadata",
+      "description": "Extract Open Graph metadata (title, description, image) from any URL for rich link previews",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "URL to extract metadata from"
+          }
+        },
+        "required": ["url"]
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/og",
+        "method": "POST",
+        "contentType": "application/json"
+      }
+    },
+    {
+      "name": "get_whois_info",
+      "description": "Get WHOIS information for a domain name",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Domain name to lookup"
+          }
+        },
+        "required": ["domain"]
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/whois",
+        "method": "GET",
+        "parameters": {
+          "domain": "query"
+        }
+      }
+    },
+    {
+      "name": "generate_password",
+      "description": "Generate secure random password",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "length": {
+            "type": "number",
+            "description": "Password length",
+            "default": 16,
+            "minimum": 6,
+            "maximum": 128
+          },
+          "numbers": {
+            "type": "boolean",
+            "description": "Include numbers",
+            "default": true
+          },
+          "lowercase": {
+            "type": "boolean",
+            "description": "Include lowercase letters",
+            "default": true
+          },
+          "uppercase": {
+            "type": "boolean",
+            "description": "Include uppercase letters",
+            "default": true
+          },
+          "symbols": {
+            "type": "boolean",
+            "description": "Include special symbols",
+            "default": true
+          }
+        }
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/password",
+        "method": "GET",
+        "parameters": {
+          "length": "query",
+          "numbers": "query",
+          "lowercase": "query",
+          "uppercase": "query",
+          "symbols": "query"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "author": "vikiboss",
+    "homepage": "https://github.com/vikiboss/60s",
+    "documentation": "https://docs.60s-api.viki.moe",
+    "license": "MIT",
+    "tags": ["utility", "tools", "ip", "translate", "qrcode", "hash", "password"],
+    "category": "utility"
+  }
+}

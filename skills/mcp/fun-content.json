@@ -1,0 +1,97 @@
+{
+  "name": "fun-content",
+  "version": "1.0.0",
+  "description": "Get fun and entertaining content including daily quotes (hitokoto), jokes, lucky predictions, KFC memes, and creative AI content.",
+  "protocol": "mcp",
+  "tools": [
+    {
+      "name": "get_hitokoto",
+      "description": "Get a random meaningful quote or saying in Chinese (一言)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": ["anime", "comic", "game", "literature", "original", "internet", "other"],
+            "description": "Category of the quote"
+          }
+        }
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/hitokoto",
+        "method": "GET",
+        "parameters": {
+          "category": "query"
+        }
+      }
+    },
+    {
+      "name": "get_dad_joke",
+      "description": "Get a random dad joke in English",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/dad-joke",
+        "method": "GET"
+      }
+    },
+    {
+      "name": "get_duanzi",
+      "description": "Get random funny Chinese short stories or jokes",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/duanzi",
+        "method": "GET"
+      }
+    },
+    {
+      "name": "get_luck_prediction",
+      "description": "Get daily luck prediction (fortune telling for fun)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/luck",
+        "method": "GET"
+      }
+    },
+    {
+      "name": "get_kfc_meme",
+      "description": "Get KFC crazy Thursday meme text (popular Chinese internet meme)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/kfc",
+        "method": "GET"
+      }
+    },
+    {
+      "name": "get_moyu_calendar",
+      "description": "Get 'slacking off' calendar image - humorous workplace procrastination content",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/moyu",
+        "method": "GET"
+      }
+    }
+  ],
+  "metadata": {
+    "author": "vikiboss",
+    "homepage": "https://github.com/vikiboss/60s",
+    "documentation": "https://docs.60s-api.viki.moe",
+    "license": "MIT",
+    "tags": ["fun", "entertainment", "jokes", "quotes", "memes"],
+    "category": "entertainment"
+  }
+}

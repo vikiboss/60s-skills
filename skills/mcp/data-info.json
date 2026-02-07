@@ -1,0 +1,166 @@
+{
+  "name": "data-info",
+  "version": "1.0.0",
+  "description": "Get various data and information including exchange rates, lunar calendar, today in history, encyclopedia, fuel prices, and gold prices.",
+  "protocol": "mcp",
+  "tools": [
+    {
+      "name": "get_exchange_rate",
+      "description": "Get real-time currency exchange rates",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "description": "Source currency code (e.g., 'USD', 'CNY', 'EUR')",
+            "default": "USD"
+          },
+          "to": {
+            "type": "string",
+            "description": "Target currency code (e.g., 'CNY', 'USD', 'EUR')",
+            "default": "CNY"
+          }
+        }
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/exchange-rate",
+        "method": "GET",
+        "parameters": {
+          "from": "query",
+          "to": "query"
+        }
+      }
+    },
+    {
+      "name": "get_lunar_calendar",
+      "description": "Convert Gregorian date to Chinese lunar calendar with zodiac and other traditional information",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Date in YYYY-MM-DD format. If not provided, uses current date."
+          }
+        }
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/lunar",
+        "method": "GET",
+        "parameters": {
+          "date": "query"
+        }
+      }
+    },
+    {
+      "name": "get_today_in_history",
+      "description": "Get historical events that happened on this day in history",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "month": {
+            "type": "number",
+            "description": "Month (1-12)",
+            "minimum": 1,
+            "maximum": 12
+          },
+          "day": {
+            "type": "number",
+            "description": "Day (1-31)",
+            "minimum": 1,
+            "maximum": 31
+          }
+        }
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/today-in-history",
+        "method": "GET",
+        "parameters": {
+          "month": "query",
+          "day": "query"
+        }
+      }
+    },
+    {
+      "name": "search_encyclopedia",
+      "description": "Search Chinese encyclopedia (Baike) for information about any topic",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "Search keyword or topic"
+          }
+        },
+        "required": ["keyword"]
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/baike",
+        "method": "GET",
+        "parameters": {
+          "keyword": "query"
+        }
+      }
+    },
+    {
+      "name": "get_fuel_price",
+      "description": "Get current fuel (gasoline/diesel) prices in China by region",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "province": {
+            "type": "string",
+            "description": "Province name in Chinese (e.g., '北京', '上海')"
+          }
+        }
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/fuel-price",
+        "method": "GET",
+        "parameters": {
+          "province": "query"
+        }
+      }
+    },
+    {
+      "name": "get_gold_price",
+      "description": "Get current gold prices including international gold, domestic gold, and various gold products",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/gold-price",
+        "method": "GET"
+      }
+    },
+    {
+      "name": "search_chemical",
+      "description": "Search chemical element information by name, symbol, or atomic number",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Element name, symbol (e.g., 'H', 'He'), or atomic number"
+          }
+        },
+        "required": ["query"]
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/chemical",
+        "method": "GET",
+        "parameters": {
+          "query": "query"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "author": "vikiboss",
+    "homepage": "https://github.com/vikiboss/60s",
+    "documentation": "https://docs.60s-api.viki.moe",
+    "license": "MIT",
+    "tags": ["data", "information", "currency", "calendar", "history", "encyclopedia"],
+    "category": "data"
+  }
+}

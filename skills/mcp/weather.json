@@ -1,0 +1,58 @@
+{
+  "name": "weather-info",
+  "version": "1.0.0",
+  "description": "Get real-time weather information and weather forecasts for any location in China. Includes temperature, humidity, wind, air quality, and detailed forecasts.",
+  "protocol": "mcp",
+  "tools": [
+    {
+      "name": "get_realtime_weather",
+      "description": "Get real-time weather information for a specified location including temperature, humidity, wind speed, and air quality.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string",
+            "description": "Location name (e.g., '北京', '上海', '广州'). Can be city name or district name."
+          }
+        },
+        "required": ["location"]
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/weather/realtime",
+        "method": "GET",
+        "parameters": {
+          "location": "query"
+        }
+      }
+    },
+    {
+      "name": "get_weather_forecast",
+      "description": "Get weather forecast for multiple days including temperature range, weather conditions, and wind information.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string",
+            "description": "Location name (e.g., '北京', '上海', '广州')"
+          }
+        },
+        "required": ["location"]
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/weather/forecast",
+        "method": "GET",
+        "parameters": {
+          "location": "query"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "author": "vikiboss",
+    "homepage": "https://github.com/vikiboss/60s",
+    "documentation": "https://docs.60s-api.viki.moe",
+    "license": "MIT",
+    "tags": ["weather", "forecast", "china", "temperature", "climate"],
+    "category": "information"
+  }
+}

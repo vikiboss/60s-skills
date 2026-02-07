@@ -1,0 +1,88 @@
+{
+  "name": "hot-topics",
+  "version": "1.0.0",
+  "description": "Get trending hot topics and hot searches from major Chinese platforms including Weibo, Zhihu, Baidu, Douyin, Toutiao, and Bilibili.",
+  "protocol": "mcp",
+  "tools": [
+    {
+      "name": "get_weibo_hot_search",
+      "description": "Get trending topics from Weibo (Chinese Twitter equivalent)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/weibo",
+        "method": "GET"
+      }
+    },
+    {
+      "name": "get_zhihu_hot_topics",
+      "description": "Get trending questions and topics from Zhihu (Chinese Quora equivalent)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/zhihu",
+        "method": "GET"
+      }
+    },
+    {
+      "name": "get_baidu_hot_search",
+      "description": "Get hot search terms from Baidu search engine",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/baidu/hot",
+        "method": "GET"
+      }
+    },
+    {
+      "name": "get_douyin_hot_topics",
+      "description": "Get trending videos and topics from Douyin (TikTok China)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/douyin",
+        "method": "GET"
+      }
+    },
+    {
+      "name": "get_toutiao_hot_news",
+      "description": "Get hot news from Toutiao (ByteDance's news aggregator)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/toutiao",
+        "method": "GET"
+      }
+    },
+    {
+      "name": "get_bili_trending",
+      "description": "Get trending videos from Bilibili (Chinese YouTube equivalent)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "endpoint": {
+        "url": "https://60s.viki.moe/v2/bili",
+        "method": "GET"
+      }
+    }
+  ],
+  "metadata": {
+    "author": "vikiboss",
+    "homepage": "https://github.com/vikiboss/60s",
+    "documentation": "https://docs.60s-api.viki.moe",
+    "license": "MIT",
+    "tags": ["trending", "hot", "social-media", "china", "news"],
+    "category": "social"
+  }
+}
