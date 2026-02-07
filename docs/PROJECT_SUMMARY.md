@@ -258,6 +258,5 @@ MIT License - 详见 [LICENSE](LICENSE) 文件
 
 ---
 
-**最后更新**: 2024
 **维护者**: Community
 **状态**: ✅ Active Development

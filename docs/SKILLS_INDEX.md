@@ -339,6 +339,6 @@ Complete list of all available skills with their capabilities.
 
 ## 📚 更多资源
 
-- [快速开始指南](../examples/quickstart.md)
+- [快速开始指南](../examples/QUICKSTART.md)
 - [API文档](https://docs.60s-api.viki.moe)
 - [源代码](https://github.com/vikiboss/60s)
