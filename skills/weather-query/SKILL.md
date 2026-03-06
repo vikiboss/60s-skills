@@ -38,7 +38,7 @@ Use this skill when users:
 
 ## Parameters
 
-- `location` (required): Location name in Chinese
+- `query` (required): Location name in Chinese
   - Can be city name: "北京", "上海", "广州"
   - Can be district name: "海淀区", "浦东新区"
 
@@ -49,9 +49,9 @@ Use this skill when users:
 ```python
 import requests
 
-def get_realtime_weather(location):
+def get_realtime_weather(query):
     url = 'https://60s.viki.moe/v2/weather/realtime'
-    response = requests.get(url, params={'location': location})
+    response = requests.get(url, params={'query': query})
     return response.json()
 
 # Example
@@ -65,9 +65,9 @@ print(f"💧 湿度：{weather['humidity']}")
 ### Get Weather Forecast
 
 ```python
-def get_weather_forecast(location):
+def get_weather_forecast(query):
     url = 'https://60s.viki.moe/v2/weather/forecast'
-    response = requests.get(url, params={'location': location})
+    response = requests.get(url, params={'query': query})
     return response.json()
 
 # Example
@@ -80,10 +80,10 @@ for day in forecast['forecast']:
 
 ```bash
 # Real-time weather
-curl "https://60s.viki.moe/v2/weather/realtime?location=北京"
+curl "https://60s.viki.moe/v2/weather/realtime?query=北京"
 
 # Weather forecast
-curl "https://60s.viki.moe/v2/weather/forecast?location=上海"
+curl "https://60s.viki.moe/v2/weather/forecast?query=上海"
 ```
 
 ## Response Format
